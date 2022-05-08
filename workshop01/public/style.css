@@ -1,21 +1,25 @@
 img {
-   margin-left:5%;
-   float:left; 
+   margin-left:0%;
+
    height:40px;
    width:40px; 
    padding-top: 0px;
+   align-self: center;
 }
 
-.body-text {
-    font-size: 180%;
-    font-weight: bold;
-    text-align: left;
+.container {
     border-style: solid; 
     border-width: 1px; 
     border-color: blue;
-    padding: 40px;
+    padding: 10%;
 }
 
+.body{
+    font-size: 180%;
+    font-weight: bold;
+    text-align: center;
+    word-wrap: break-word;
+}
 .footer {
     font-size: 60%;
     text-align: center;

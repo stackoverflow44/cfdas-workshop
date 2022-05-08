@@ -1,14 +1,14 @@
-//Loads the express module
+//Loads required modules to run the app
 const express = require("express");
-//Creates our express server
+const handlebars = require("express-handlebars");
 const app = express();
 const port = 8080;
 
-//Loads the handlebars module
-const handlebars = require("express-handlebars");
-//Sets our app to use the handlebars engine
+//Serves static files 
+app.use(express.static("public"));
+
+//Sets app to use the handlebars engine
 app.set("view engine", "hbs");
-//Sets handlebars configurations (we will go through them later on)
 app.engine(
   "hbs",
   handlebars.engine({
@@ -19,9 +19,6 @@ app.engine(
     partialsDir: __dirname + "/views/partials/",
   })
 );
-
-//Serves static files (we need it to import a css file)
-app.use(express.static("public"));
 
 const quotes = [
   "Logic will get you from A to B. Imagination will take you everywhere.",
@@ -37,8 +34,7 @@ const getQuotes = () => {
 };
 
 //Sets a basic route
-app.get("/index.html", (req, res) => {
-  //Serves the body of the page aka "main.handlebars" to the container //aka "index.handlebars"
+app.get(["/","/index.html"], (req, res) => {
   res.render("main", { body: getQuotes(), layout: "index" });
 });
 
